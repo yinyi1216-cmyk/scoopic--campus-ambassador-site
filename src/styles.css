@@ -3783,3 +3783,32 @@ button:focus-visible {
     flex-basis: 96px;
   }
 }
+
+/* App screenshot invariant: every screen is shown inside the same complete
+   phone shell. Keep this final in the cascade so later layout work cannot
+   remove the hardware edge or crop the source artwork. */
+.hero-visual .phone-left,
+.hero-visual .phone-main,
+.hero-visual .phone-right,
+.product-section .product-phone {
+  box-sizing: border-box;
+  aspect-ratio: 402 / 874;
+  border: 3px solid #a6aaa7;
+  border-radius: 12% / 5.5%;
+  background: #030303;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.7),
+    0 20px 44px rgba(28, 34, 38, 0.28);
+  overflow: hidden;
+}
+
+.hero-visual .phone-left img,
+.hero-visual .phone-main img,
+.hero-visual .phone-right img,
+.product-section .product-phone img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
