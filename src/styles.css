@@ -3810,3 +3810,10 @@ button:focus-visible {
     overflow: visible;
   }
 }
+
+/* Inline emphasis uses the same softer ink as the surrounding body copy. */
+.product-prose strong,
+.role-prose strong,
+.benefits-prose strong {
+  color: var(--muted);
+}
