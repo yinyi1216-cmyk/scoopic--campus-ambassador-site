@@ -29,10 +29,9 @@ const productPoints = [
 ];
 
 const fitGroups = [
-  "Currently enrolled at a U.S. college or university.",
+  "Reliable, organized U.S. college student available 1–5 hours/week.",
   "Authorized to perform paid work in the U.S. for at least one academic semester.",
-  "Well connected across campus communities and comfortable building new relationships.",
-  "Reliable, organized, and able to commit at least 1-5 hours per week."
+  "Well connected across campus communities and comfortable building new relationships."
 ];
 
 const roleItems = [
