@@ -3700,9 +3700,6 @@ button:focus-visible {
     padding-inline: 14px;
     white-space: nowrap;
     font-size: 14px;
-    opacity: 1;
-    pointer-events: auto;
-    transform: rotate(-1deg);
   }
 }
 
