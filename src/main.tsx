@@ -200,9 +200,21 @@ function App() {
         <img className="heading-pup" src="/assets/pup-brown-run.png" alt="" loading="lazy" decoding="async" />
         <h2>What You&apos;ll Get</h2>
       </div>
-      <article className="earnings-strip">
-        <strong>$200–$2,000/month</strong>
-        <span className="earnings-note">Based on your results</span>
+      <article className="earnings-strip benefits-card">
+        <ol className="benefit-list">
+          <li>
+            <span className="benefit-number" aria-hidden="true">1</span>
+            <span>Work side-by-side with a leading global AI startup.</span>
+          </li>
+          <li>
+            <span className="benefit-number" aria-hidden="true">2</span>
+            <span>See how a product goes from zero to one—and then to market.</span>
+          </li>
+          <li>
+            <span className="benefit-number" aria-hidden="true">3</span>
+            <span>Earn $200–$2,000/month based on your impact.</span>
+          </li>
+        </ol>
       </article>
             </div>
           </div>
