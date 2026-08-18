@@ -3459,3 +3459,26 @@ button:focus-visible {
   outline: 3px solid #172131;
   outline-offset: 4px;
 }
+
+/* Preserve the source artwork ratio instead of keeping the HTML height. */
+.final-shell .lineup {
+  height: auto;
+  aspect-ratio: 1800 / 652;
+  object-fit: contain;
+}
+
+/* The standalone product phone keeps its full screenshot inside a thin shell. */
+.product-phone {
+  aspect-ratio: 402 / 874;
+  border: 0;
+  border-radius: 42px;
+  background: #030303;
+  box-shadow:
+    0 0 0 2px #a6aaa7,
+    0 20px 44px rgba(28, 34, 38, 0.28);
+  overflow: hidden;
+}
+
+.product-phone img {
+  object-fit: contain;
+}
