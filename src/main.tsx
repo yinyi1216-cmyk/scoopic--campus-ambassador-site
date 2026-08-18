@@ -6,13 +6,6 @@ const APPLY_URL = "https://forms.gle/6En9kywG3kDdhnFP6";
 const CONTACT_URL =
   "mailto:marketing@scoopic.ai?subject=Scoopic%20Campus%20Ambassador%20Program";
 
-const navItems = [
-  { label: "What is Scoopic", href: "#scoopic" },
-  { label: "Program", href: "#program" },
-  { label: "Ambassadors", href: "#role" },
-  { label: "FAQ", href: "#faq" }
-];
-
 const productPoints = [
   {
     title: "Built for close friends",
@@ -271,13 +264,6 @@ function Header() {
         <img src="/assets/scoopic-logo.png" width="44" height="44" alt="Scoopic" decoding="async" />
         <span>Scoopic</span>
       </a>
-      <nav aria-label="Main navigation">
-        {navItems.map((item) => (
-          <a href={item.href} key={item.href}>
-            {item.label}
-          </a>
-        ))}
-      </nav>
       <a className="contact-button" href={CONTACT_URL}>
         Contact us <span aria-hidden="true">↗</span>
       </a>
