@@ -170,7 +170,7 @@ function App() {
 
         <section className="section program-section" id="program">
           <div className="section-shell compact-shell">
-            <div className="section-heading">
+            <div className="section-heading program-heading">
               <img className="heading-pup pink" src="/assets/pup-pink-main.png" alt="" loading="lazy" decoding="async" />
               <h2>Who We&apos;re Looking For</h2>
             </div>

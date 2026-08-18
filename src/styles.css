@@ -3771,8 +3771,19 @@ button:focus-visible {
   text-align: left;
 }
 
+.program-section > .section-shell > .program-heading {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.program-heading .heading-pup {
+  transform: rotate(-10deg);
+  transform-origin: center;
+}
+
 @media (min-width: 901px) {
-  .product-heading .heading-pup {
+  .product-heading .heading-pup,
+  .program-heading .heading-pup {
     width: 144px;
     height: 144px;
     flex-basis: 144px;
@@ -3780,9 +3791,18 @@ button:focus-visible {
 }
 
 @media (max-width: 900px) {
-  .product-heading .heading-pup {
+  .product-heading .heading-pup,
+  .program-heading .heading-pup {
     width: 64px;
     height: 64px;
     flex-basis: 64px;
+  }
+
+  .program-heading {
+    gap: 2px;
+  }
+
+  .program-heading h2 {
+    font-size: 21px;
   }
 }
