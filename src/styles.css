@@ -3499,3 +3499,85 @@ button:focus-visible {
 .hero-visual .phone-right img {
   object-fit: contain;
 }
+
+/* Mobile layout hardening: preserve the phone artwork's natural ratio and
+   allow the role grid to shrink inside the reading rail. */
+.product-phone {
+  height: auto;
+  max-height: none;
+}
+
+.role-section .role-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.role-section .role-card,
+.role-section .role-prose,
+.role-section .role-prose li,
+.role-section .earnings-heading,
+.role-section .earnings-heading h2,
+.role-section .earnings-strip,
+.program-section .fit-prose,
+.program-section .fit-prose li {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .product-section > .section-shell,
+  .program-section > .section-shell,
+  .role-section > .section-shell {
+    width: calc(100% - 36px);
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .product-section .product-phone-wrap {
+    width: min(100%, 260px);
+    min-height: 0;
+  }
+
+  .product-section .product-phone {
+    width: min(56vw, 220px);
+    height: auto;
+    max-height: none;
+  }
+
+  .product-section .product-phone img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .program-section .fit-prose,
+  .role-section .role-layout,
+  .role-section .role-card,
+  .role-section .role-prose,
+  .role-section .role-prose li,
+  .role-section .earnings-heading,
+  .role-section .earnings-strip {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .program-section .fit-prose li,
+  .role-section .role-prose li {
+    overflow-wrap: anywhere;
+  }
+
+  .role-section .section-heading h2 {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .role-section .earnings-strip strong {
+    max-width: 100%;
+    white-space: nowrap;
+    font-size: clamp(38px, 11vw, 52px);
+  }
+
+  .floating-apply {
+    display: none;
+  }
+}
