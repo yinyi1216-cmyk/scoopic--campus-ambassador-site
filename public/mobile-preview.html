@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Scoopic 手机端预览</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --device-width: 393px;
+        --device-height: 852px;
+        --device-scale: 0.8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-width: 320px;
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: #f5f7f4;
+        background:
+          radial-gradient(circle at 20% 10%, rgba(145, 220, 19, 0.16), transparent 30%),
+          radial-gradient(circle at 84% 80%, rgba(89, 194, 255, 0.12), transparent 28%),
+          #101311;
+      }
+
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        min-height: 88px;
+        padding: 16px clamp(18px, 4vw, 52px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(16, 19, 17, 0.88);
+        backdrop-filter: blur(18px);
+      }
+
+      .identity {
+        min-width: 0;
+      }
+
+      h1 {
+        margin: 0 0 5px;
+        font-size: clamp(18px, 2vw, 24px);
+        line-height: 1.2;
+      }
+
+      .url {
+        overflow: hidden;
+        margin: 0;
+        color: #aeb7b0;
+        font-size: 13px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .actions {
+        display: flex;
+        flex: 0 0 auto;
+        gap: 10px;
+      }
+
+      button,
+      a {
+        min-height: 42px;
+        padding: 0 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        color: inherit;
+        background: rgba(255, 255, 255, 0.07);
+        font: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      button:hover,
+      a:hover {
+        border-color: #91dc13;
+        background: rgba(145, 220, 19, 0.13);
+      }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #91dc13;
+        outline-offset: 3px;
+      }
+
+      .stage {
+        display: grid;
+        min-height: calc(100vh - 88px);
+        padding: 28px 20px 40px;
+        place-items: center;
+      }
+
+      .device-space {
+        position: relative;
+        width: calc(var(--device-width) * var(--device-scale));
+        height: calc(var(--device-height) * var(--device-scale));
+      }
+
+      .device {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--device-width);
+        height: var(--device-height);
+        padding: 10px;
+        transform: scale(var(--device-scale));
+        transform-origin: top left;
+        border: 2px solid #5c635e;
+        border-radius: 54px;
+        background: #050706;
+        box-shadow:
+          0 32px 90px rgba(0, 0, 0, 0.5),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      }
+
+      .screen {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 44px;
+        background: #f5faec;
+      }
+
+      iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: #f5faec;
+      }
+
+      .size-label {
+        position: absolute;
+        right: 0;
+        bottom: -26px;
+        left: 0;
+        color: #8e9890;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      @media (max-width: 680px) {
+        .toolbar {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .actions {
+          width: 100%;
+          flex-wrap: wrap;
+        }
+
+        .actions > * {
+          flex: 1 1 auto;
+          text-align: center;
+        }
+
+        .stage {
+          min-height: calc(100vh - 146px);
+          padding-inline: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="identity">
+        <h1>Scoopic 手机端预览</h1>
+        <p class="url">scoopic-campus-ambassador-site.pages.dev</p>
+      </div>
+      <div class="actions" aria-label="预览工具">
+        <button id="reload" type="button">刷新</button>
+        <button id="rotate" type="button">旋转手机</button>
+        <a href="/" target="_blank" rel="noreferrer">打开原站 ↗</a>
+      </div>
+    </header>
+
+    <main class="stage">
+      <div class="device-space">
+        <div class="device">
+          <div class="screen">
+            <iframe id="preview" src="/" title="Scoopic Campus Ambassador 手机端页面"></iframe>
+          </div>
+        </div>
+        <div class="size-label" aria-live="polite">393 × 852</div>
+      </div>
+    </main>
+
+    <script>
+      const root = document.documentElement;
+      const frame = document.querySelector("#preview");
+      const label = document.querySelector(".size-label");
+      let portrait = true;
+
+      function fitDevice() {
+        const width = portrait ? 393 : 852;
+        const height = portrait ? 852 : 393;
+        const toolbar = document.querySelector(".toolbar").getBoundingClientRect().height;
+        const availableWidth = Math.max(280, window.innerWidth - 40);
+        const availableHeight = Math.max(280, window.innerHeight - toolbar - 78);
+        const scale = Math.min(1, availableWidth / width, availableHeight / height);
+
+        root.style.setProperty("--device-width", `${width}px`);
+        root.style.setProperty("--device-height", `${height}px`);
+        root.style.setProperty("--device-scale", scale.toFixed(4));
+        label.textContent = `${width} × ${height}`;
+      }
+
+      document.querySelector("#reload").addEventListener("click", () => {
+        frame.contentWindow.location.reload();
+      });
+
+      document.querySelector("#rotate").addEventListener("click", () => {
+        portrait = !portrait;
+        fitDevice();
+      });
+
+      window.addEventListener("resize", fitDevice, { passive: true });
+      fitDevice();
+    </script>
+  </body>
+</html>
