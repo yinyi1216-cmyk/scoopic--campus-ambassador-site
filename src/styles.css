@@ -3545,7 +3545,10 @@ button:focus-visible {
 
 @media (max-width: 600px) {
   :root {
-    --site-gutter: 24px;
+    --site-gutter: 10vw;
+    --section-title-size: clamp(20px, 5.6vw, 23px);
+    --body-copy-size: 16px;
+    --body-copy-line-height: 1.5;
   }
 
   .hero {
@@ -3567,10 +3570,56 @@ button:focus-visible {
     font-size: clamp(30px, 9vw, 36px);
   }
 
+  .hero-visual {
+    overflow: hidden;
+  }
+
+  .hero-tagline,
+  .section-heading h2,
+  .section-heading.centered h2,
+  .earnings-heading h2,
+  .final-section h2 {
+    min-width: 0;
+    max-width: 100%;
+    margin-bottom: 0;
+    font-size: var(--section-title-size);
+    line-height: 1.12;
+    letter-spacing: 0;
+    text-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .section-heading,
+  .section-heading.centered,
+  .earnings-heading {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .section-heading .heading-pup,
+  .heading-pup,
+  .faq-pup {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+  }
+
+  .product-intro,
+  .point-list,
+  .point-list li,
+  .faq-item button,
+  .faq-item p,
+  .faq-answer,
+  .final-subhead,
+  .hero-copy .hero-lede {
+    font-size: var(--body-copy-size);
+    line-height: var(--body-copy-line-height);
+  }
+
   .product-section > .section-shell,
   .program-section > .section-shell,
   .role-section > .section-shell {
-    width: calc(100% - 48px);
+    width: calc(100% - 20vw);
     min-width: 0;
     max-width: 100%;
   }
@@ -3619,7 +3668,11 @@ button:focus-visible {
     width: max-content;
     max-width: 100%;
     white-space: nowrap;
-    font-size: clamp(24px, 7vw, 30px);
+    font-size: clamp(22px, 6.3vw, 26px);
+  }
+
+  .role-section .earnings-strip {
+    padding-inline: 10px;
   }
 
   .earnings-note {
@@ -3627,6 +3680,17 @@ button:focus-visible {
   }
 
   .floating-apply {
-    display: none;
+    display: flex;
+    right: 10vw;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    width: auto;
+    max-width: 80vw;
+    min-height: 40px;
+    padding-inline: 14px;
+    white-space: nowrap;
+    font-size: 14px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: rotate(-1deg);
   }
 }

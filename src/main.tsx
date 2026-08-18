@@ -233,7 +233,7 @@ function App() {
               loading="lazy"
               decoding="async"
             />
-            <h2>Ready to put your campus on Scoopic?</h2>
+            <h2>Ready to Join Scoopic?</h2>
             <p className="final-subhead">Turn your Greek Life connections into real campus growth.</p>
             <a className="primary-cta inline-apply final-cta" href={APPLY_URL} target="_blank" rel="noreferrer">
               Apply Now <span aria-hidden="true">↗</span>
