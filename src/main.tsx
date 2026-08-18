@@ -127,9 +127,15 @@ function App() {
               </div>
             </div>
             <div className="hero-visual" aria-label="Scoopic app preview">
-              <PhoneFrame image="/assets/app-pup.png" className="phone phone-left" />
-              <PhoneFrame image="/assets/app-feed-new.png" className="phone phone-main" />
-              <PhoneFrame image="/assets/app-grid.png" className="phone phone-right" />
+              <PhoneFrame image="/assets/app-pup.png" className="phone phone-left" eager />
+              <PhoneFrame
+                image="/assets/app-feed-new.webp"
+                className="phone phone-main"
+                width={804}
+                height={1748}
+                priority
+              />
+              <PhoneFrame image="/assets/app-grid.png" className="phone phone-right" eager />
             </div>
           </div>
         </section>
@@ -137,7 +143,7 @@ function App() {
         <section className="section product-section" id="scoopic">
           <div className="section-shell product-shell">
             <div className="section-heading">
-              <img className="heading-pup" src="/assets/pup-green-steam.png" alt="" />
+              <img className="heading-pup" src="/assets/pup-green-steam.png" alt="" loading="lazy" decoding="async" />
               <h2>What is Scoopic?</h2>
             </div>
             <div className="product-layout">
@@ -165,7 +171,7 @@ function App() {
         <section className="section program-section" id="program">
           <div className="section-shell compact-shell">
             <div className="section-heading">
-              <img className="heading-pup pink" src="/assets/pup-pink-main.png" alt="" />
+              <img className="heading-pup pink" src="/assets/pup-pink-main.png" alt="" loading="lazy" decoding="async" />
               <h2>Who We&apos;re Looking For</h2>
             </div>
             <ul className="point-list fit-prose">
@@ -179,7 +185,7 @@ function App() {
         <section className="section role-section" id="role">
           <div className="section-shell compact-shell">
             <div className="section-heading">
-              <img className="heading-pup blue" src="/assets/decor-pup-blue.png" alt="" />
+              <img className="heading-pup blue" src="/assets/decor-pup-blue.png" alt="" loading="lazy" decoding="async" />
               <h2>What You&apos;ll Do</h2>
             </div>
             <div className="role-layout">
@@ -191,7 +197,7 @@ function App() {
         </ul>
       </article>
       <div className="section-heading earnings-heading">
-        <img className="heading-pup" src="/assets/pup-brown-run.png" alt="" />
+        <img className="heading-pup" src="/assets/pup-brown-run.png" alt="" loading="lazy" decoding="async" />
         <h2>What You&apos;ll Get</h2>
       </div>
       <article className="earnings-strip">
@@ -204,7 +210,7 @@ function App() {
         <section className="section faq-section" id="faq">
           <div className="section-shell compact-shell">
             <div className="section-heading centered">
-              <img className="heading-pup faq-pup" src="/assets/decor-pup-purple.png" alt="" />
+              <img className="heading-pup faq-pup" src="/assets/decor-pup-purple.png" alt="" loading="lazy" decoding="async" />
               <h2>FAQ</h2>
             </div>
             <div className="faq-list">
@@ -217,7 +223,15 @@ function App() {
 
         <section className="section final-section" id="apply">
           <div className="section-shell final-shell">
-            <img className="lineup" src="/assets/ip-combo-lineup-full-transparent.png" alt="" />
+            <img
+              className="lineup"
+              src="/assets/ip-combo-lineup-full-transparent.webp"
+              width="1800"
+              height="652"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
             <h2>Ready to put your campus on Scoopic?</h2>
             <p className="final-subhead">Turn your Greek Life connections into real campus growth.</p>
             <a className="primary-cta inline-apply final-cta" href={APPLY_URL} target="_blank" rel="noreferrer">
@@ -242,7 +256,7 @@ function Header() {
   return (
     <header className="site-header">
       <a className="brand" href="https://scoopic.ai/" target="_blank" rel="noreferrer">
-        <img src="/assets/scoopic-logo.png" alt="Scoopic" />
+        <img src="/assets/scoopic-logo.png" width="44" height="44" alt="Scoopic" decoding="async" />
         <span>Scoopic</span>
       </a>
       <nav aria-label="Main navigation">
@@ -261,14 +275,30 @@ function Header() {
 
 function PhoneFrame({
   image,
-  className
+  className,
+  width = 402,
+  height = 874,
+  eager = false,
+  priority = false
 }: {
   image: string;
   className?: string;
+  width?: number;
+  height?: number;
+  eager?: boolean;
+  priority?: boolean;
 }) {
   return (
     <div className={`phone-frame ${className ?? ""}`}>
-      <img src={image} alt="" />
+      <img
+        src={image}
+        width={width}
+        height={height}
+        alt=""
+        loading={eager || priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
+        decoding="async"
+      />
     </div>
   );
 }
@@ -296,12 +326,13 @@ function renderFaq(
           })
         }
         aria-expanded={open}
+        aria-controls={`faq-answer-${index}`}
       >
         <span className="faq-bullet" aria-hidden="true" />
         <span className="faq-question-text">{faq.q}</span>
         <strong>{open ? "-" : "+"}</strong>
       </button>
-      <p>{faq.a}</p>
+      {open ? <p id={`faq-answer-${index}`}>{faq.a}</p> : null}
     </article>
   );
 }

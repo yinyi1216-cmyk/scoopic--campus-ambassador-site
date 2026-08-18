@@ -3435,3 +3435,27 @@ p {
     justify-self: center;
   }
 }
+
+/* Rendering and keyboard-accessibility safeguards for the production build. */
+.product-section,
+.program-section,
+.role-section,
+.faq-section,
+.final-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 850px;
+}
+
+#scoopic,
+#program,
+#role,
+#faq,
+#apply {
+  scroll-margin-top: 24px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #172131;
+  outline-offset: 4px;
+}
