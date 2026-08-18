@@ -36,9 +36,18 @@ const fitGroups = [
 ];
 
 const roleItems = [
-  "Build a campus promotion strategy around your school, student culture, and event calendar.",
-  "Connect with fraternities, sororities, and other student organizations to introduce Scoopic and build partnerships.",
-  "Host Scoopic events and parties, such as Greek-life mixers, philanthropy events, and game-day or tailgate activations."
+  {
+    title: "Build a campus promotion strategy",
+    body: " around your school, student culture, and event calendar."
+  },
+  {
+    title: "Connect with fraternities, sororities",
+    body: ", and other student organizations to introduce Scoopic and build partnerships."
+  },
+  {
+    title: "Host Scoopic events and parties",
+    body: ", such as Greek-life mixers, philanthropy events, and game-day or tailgate activations."
+  }
 ];
 
 const faqs = [
@@ -192,7 +201,9 @@ function App() {
       <article className="role-card">
         <ul className="point-list role-prose">
           {roleItems.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item.title}>
+              <strong>{item.title}</strong>{item.body}
+            </li>
           ))}
         </ul>
       </article>
