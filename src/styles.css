@@ -3482,3 +3482,20 @@ button:focus-visible {
 .product-phone img {
   object-fit: contain;
 }
+
+/* Keep both supporting hero phones uncropped, matching their source screens. */
+.hero-visual .phone-left,
+.hero-visual .phone-right {
+  aspect-ratio: 402 / 874;
+  border: 0;
+  background: #030303;
+  box-shadow:
+    0 0 0 2px #a6aaa7,
+    0 20px 44px rgba(28, 34, 38, 0.28);
+  overflow: hidden;
+}
+
+.hero-visual .phone-left img,
+.hero-visual .phone-right img {
+  object-fit: contain;
+}
