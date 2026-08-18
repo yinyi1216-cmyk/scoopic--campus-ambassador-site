@@ -201,7 +201,8 @@ function App() {
         <h2>What You&apos;ll Get</h2>
       </div>
       <article className="earnings-strip">
-        <strong>$200-$5,000</strong>
+        <strong>$200–$2,000/month</strong>
+        <span className="earnings-note">Based on your results</span>
       </article>
             </div>
           </div>

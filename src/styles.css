@@ -3511,6 +3511,26 @@ button:focus-visible {
   grid-template-columns: minmax(0, 1fr);
 }
 
+.role-section .earnings-strip {
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.role-section .earnings-strip strong {
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: 100%;
+  font-size: clamp(34px, 3.5vw, 56px);
+}
+
+.earnings-note {
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
 .role-section .role-card,
 .role-section .role-prose,
 .role-section .role-prose li,
@@ -3524,10 +3544,33 @@ button:focus-visible {
 }
 
 @media (max-width: 600px) {
+  :root {
+    --site-gutter: 24px;
+  }
+
+  .hero {
+    padding-top: 100px;
+  }
+
+  .hero-copy,
+  .hero-program-title,
+  .hero-lede,
+  .hero-actions,
+  .hero-actions .primary-cta {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .hero-copy .hero-program-title {
+    font-size: clamp(30px, 9vw, 36px);
+  }
+
   .product-section > .section-shell,
   .program-section > .section-shell,
   .role-section > .section-shell {
-    width: calc(100% - 36px);
+    width: calc(100% - 48px);
     min-width: 0;
     max-width: 100%;
   }
@@ -3572,9 +3615,15 @@ button:focus-visible {
   }
 
   .role-section .earnings-strip strong {
+    flex: 0 0 auto;
+    width: max-content;
     max-width: 100%;
     white-space: nowrap;
-    font-size: clamp(38px, 11vw, 52px);
+    font-size: clamp(24px, 7vw, 30px);
+  }
+
+  .earnings-note {
+    font-size: 16px;
   }
 
   .floating-apply {
