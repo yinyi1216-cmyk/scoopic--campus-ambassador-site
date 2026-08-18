@@ -3764,3 +3764,25 @@ button:focus-visible {
   object-fit: contain;
   object-position: center;
 }
+
+/* Give the Scoopic introduction its own, left-aligned visual signature. */
+.product-section > .section-shell > .product-heading {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+@media (min-width: 901px) {
+  .product-heading .heading-pup {
+    width: 144px;
+    height: 144px;
+    flex-basis: 144px;
+  }
+}
+
+@media (max-width: 900px) {
+  .product-heading .heading-pup {
+    width: 64px;
+    height: 64px;
+    flex-basis: 64px;
+  }
+}
