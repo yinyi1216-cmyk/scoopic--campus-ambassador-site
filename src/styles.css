@@ -3803,3 +3803,10 @@ button:focus-visible {
     font-size: 21px;
   }
 }
+
+@media (max-width: 600px) {
+  .hero-visual {
+    min-height: min(410px, 99vw);
+    overflow: visible;
+  }
+}
