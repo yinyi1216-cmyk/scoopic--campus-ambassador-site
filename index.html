@@ -36,5 +36,18 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      const analyticsHostname = "scoopic-campus-ambassador-app.scoopic-ai.workers.dev";
+
+      if (window.location.hostname === analyticsHostname) {
+        const beacon = document.createElement("script");
+        beacon.type = "module";
+        beacon.src = "https://static.cloudflareinsights.com/beacon.min.js";
+        beacon.dataset.cfBeacon = JSON.stringify({
+          token: "bd042b0bf0aa4f0d94825a7854879cab"
+        });
+        document.head.append(beacon);
+      }
+    </script>
   </body>
 </html>
