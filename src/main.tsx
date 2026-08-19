@@ -145,7 +145,7 @@ function App() {
           <div className="section-shell product-shell">
             <div className="section-heading product-heading">
               <img className="heading-pup" src="/assets/pup-green-steam.png" alt="" loading="lazy" decoding="async" />
-              <h2>What is Scoopic?</h2>
+              <h2>What is Scoopic</h2>
             </div>
             <div className="product-layout">
               <div className="product-content">
