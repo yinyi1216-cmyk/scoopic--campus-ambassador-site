@@ -901,9 +901,9 @@ p {
   gap: 12px;
   padding: 0 30px;
   border: 4px solid rgba(255, 255, 255, 0.96);
-  background: var(--green);
-  color: #14202f;
-  box-shadow: 0 0 0 6px rgba(145, 220, 19, 0.12), 0 12px 34px var(--green-glow);
+  background: linear-gradient(110deg, #244b3c 5%, #4f782c 56%, #83c914 100%);
+  color: #ffffff;
+  box-shadow: 0 0 0 6px rgba(79, 120, 44, 0.13), 0 12px 34px rgba(63, 105, 43, 0.3);
   font-size: clamp(19px, 1.7vw, 26px);
 }
 
@@ -935,7 +935,7 @@ p {
 .primary-cta:hover,
 .floating-apply:hover {
   transform: translateY(-3px) rotate(-1deg);
-  box-shadow: 0 0 0 9px rgba(145, 220, 19, 0.16), 0 14px 42px rgba(145, 220, 19, 0.34);
+  box-shadow: 0 0 0 9px rgba(79, 120, 44, 0.16), 0 14px 42px rgba(63, 105, 43, 0.38);
 }
 
 .hero-visual {
@@ -3239,7 +3239,11 @@ p {
 .hero-program-title {
   max-width: 650px;
   margin: 0 0 20px;
-  color: var(--green);
+  color: #244b3c;
+  background: linear-gradient(120deg, #244b3c 5%, #4f782c 56%, #83c914 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: "Telka", Arial, Helvetica, sans-serif;
   font-size: clamp(52px, 5vw, 76px);
   font-weight: 800;
