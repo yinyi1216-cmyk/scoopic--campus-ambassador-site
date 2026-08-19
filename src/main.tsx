@@ -114,7 +114,7 @@ function App() {
           <div className="hero-shell">
           <div className="hero-copy">
             <h1 className="hero-program-title">
-              Scoopic Campus Ambassador Program
+              Scoopic Campus Ambassador
             </h1>
             <p className="hero-tagline">Bring Scoopic Into Greek Life</p>
             <p className="hero-lede">
