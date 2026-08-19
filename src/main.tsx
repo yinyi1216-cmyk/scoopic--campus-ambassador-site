@@ -173,7 +173,7 @@ function App() {
           <div className="section-shell compact-shell">
             <div className="section-heading program-heading">
               <img className="heading-pup pink" src="/assets/pup-pink-main.png" alt="" loading="lazy" decoding="async" />
-              <h2>Who We&apos;re Looking For</h2>
+              <h2>Who We Want</h2>
             </div>
             <ul className="point-list fit-prose">
               {fitGroups.map((item) => (
