@@ -105,6 +105,33 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const reactionTimers = new WeakMap<HTMLElement, number>();
+    const reactToPointer = (event: PointerEvent) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const heading = target.closest<HTMLElement>(".section-heading");
+      if (!heading) return;
+
+      const previousTimer = reactionTimers.get(heading);
+      if (previousTimer) window.clearTimeout(previousTimer);
+
+      heading.classList.remove("pup-reacting");
+      void heading.offsetWidth;
+      heading.classList.add("pup-reacting");
+
+      const timer = window.setTimeout(() => {
+        heading.classList.remove("pup-reacting");
+        reactionTimers.delete(heading);
+      }, 720);
+      reactionTimers.set(heading, timer);
+    };
+
+    document.addEventListener("pointerdown", reactToPointer, { passive: true });
+    return () => document.removeEventListener("pointerdown", reactToPointer);
+  }, []);
+
   return (
     <>
       <Header />
