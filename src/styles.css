@@ -4025,3 +4025,17 @@ button:focus-visible {
     max-width: 100%;
   }
 }
+
+/* Keep each expanded FAQ answer on the question-text rail, rather than the
+   bullet rail. The offsets mirror the button grid at each breakpoint. */
+.faq-item > p,
+.faq-item.open > p {
+  padding-left: 34px;
+}
+
+@media (max-width: 900px) {
+  .faq-item > p,
+  .faq-item.open > p {
+    padding-left: 25px;
+  }
+}
