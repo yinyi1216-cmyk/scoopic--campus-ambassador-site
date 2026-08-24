@@ -2,6 +2,11 @@
 
 Campus ambassador website for Scoopic, built with React, TypeScript, and Vite.
 
+## Handoff
+
+- [Project handoff document](./HANDOFF.md)
+- Canonical repository: https://github.com/yinyi1216-cmyk/scoopic--campus-ambassador-site
+
 ## Production
 
 - Current Pages site: https://scoopic-campus-ambassador-site.pages.dev/
